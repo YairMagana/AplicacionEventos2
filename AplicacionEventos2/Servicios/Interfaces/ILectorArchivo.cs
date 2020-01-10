@@ -7,6 +7,6 @@ namespace AplicacionEventos2.Servicios.Interfaces
 {
     interface ILectorArchivo
     {
-        public StreamReader ObtenerStream();
+        StreamReader ObtenerStream();
     }
 }

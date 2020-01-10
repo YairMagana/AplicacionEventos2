@@ -13,10 +13,10 @@ namespace AplicacionEventos2.Servicios.Comparadores
             double diasTranscurridos = (dt1 - dt2).TotalDays;
             if (diasTranscurridos >= 30)
             {
-                texto = " ocurrira en " + Math.Ceiling(Math.Abs(diasTranscurridos / 30 )).ToString() + " mes(es).";
+                texto = " ocurrira en " + Math.Round(Math.Abs(diasTranscurridos / 30 )).ToString() + " mes(es).";
             } else if(-diasTranscurridos >= 30)
             {
-                texto = " ocurrió hace " + Math.Floor(Math.Abs(diasTranscurridos / 30)).ToString() + " mes(es).";
+                texto = " ocurrió hace " + Math.Round(Math.Abs(diasTranscurridos / 30)).ToString() + " mes(es).";
             }
             return texto;
         }

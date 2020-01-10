@@ -7,6 +7,6 @@ namespace AplicacionEventos2.Servicios.Interfaces
 {
     interface ILectorLineas
     {
-        public string ObtenerTextos();
+        string ObtenerTextos();
     }
 }

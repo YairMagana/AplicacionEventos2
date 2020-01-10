@@ -6,6 +6,6 @@ namespace AplicacionEventos2.Servicios.Interfaces
 {
     interface IComparadorTiempo
     {
-        public string Comparar(DateTime dt1, DateTime dt2);
+        string Comparar(DateTime dt1, DateTime dt2);
     }
 }

@@ -18,7 +18,7 @@ namespace AplicacionEventos2
             ObtenedorTextoTiempos mostradorContenidoEventos = new ObtenedorTextoTiempos(obtenedorArgumentos, lectorArchivos);
             mostradorContenidoEventos.ObtenerContenidoFormateadoArchivos();
 
-            // Capa de salida
+            // Capa de presentación
             IDesplegador desplegador = new DesplegadorPantalla();
             desplegador.Desplegar(mostradorContenidoEventos.Texto);
         }

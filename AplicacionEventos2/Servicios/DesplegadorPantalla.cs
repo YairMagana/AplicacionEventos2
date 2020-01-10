@@ -10,6 +10,7 @@ namespace AplicacionEventos2.Controladores
         public void Desplegar(string _texto)
         {
             Console.WriteLine(_texto);
+            Console.ReadKey();
         }
     }
 }

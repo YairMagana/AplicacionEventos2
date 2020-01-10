@@ -6,6 +6,6 @@ namespace AplicacionEventos2.Servicios.Interfaces
 {
     interface IParseadorLinea
     {
-        public string[] ObtenerValoresLinea(string l);
+        string[] ObtenerValoresLinea(string l);
     }
 }

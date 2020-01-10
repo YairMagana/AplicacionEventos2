@@ -6,6 +6,6 @@ namespace AplicacionEventos2.Controladores.Interfaces
 {
     interface IDesplegador
     {
-        public void Desplegar(string _texto);
+        void Desplegar(string _texto);
     }
 }

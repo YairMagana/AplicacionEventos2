@@ -13,11 +13,11 @@ namespace AplicacionEventos2.Servicios.Comparadores
             double minutosTranscurridos = (dt1 - dt2).TotalMinutes;
             if (minutosTranscurridos >= 0 && minutosTranscurridos < 60)
             {
-                texto = " ocurrira en " + Math.Ceiling(Math.Abs(minutosTranscurridos)).ToString() + " minuto(s).";
+                texto = " ocurrira en " + Math.Round(Math.Abs(minutosTranscurridos)).ToString() + " minuto(s).";
             }
             else if (-minutosTranscurridos >= 0 && -minutosTranscurridos <60)
             {
-                texto = " ocurrió hace " + Math.Floor(Math.Abs(minutosTranscurridos)).ToString() + " minuto(s).";
+                texto = " ocurrió hace " + Math.Round(Math.Abs(minutosTranscurridos)).ToString() + " minuto(s).";
             }
             return texto;
         }

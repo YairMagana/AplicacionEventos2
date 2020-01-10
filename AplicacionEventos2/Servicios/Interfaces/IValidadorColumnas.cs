@@ -6,6 +6,6 @@ namespace AplicacionEventos2.Servicios.Interfaces
 {
     interface IValidadorColumnas
     {
-        public bool ValidarColumnas(string[] columnas);
+        bool ValidarColumnas(string[] columnas);
     }
 }
