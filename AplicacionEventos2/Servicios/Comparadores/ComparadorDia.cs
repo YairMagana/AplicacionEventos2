@@ -5,19 +5,19 @@ using System.Text;
 
 namespace AplicacionEventos2.Servicios.Comparadores
 {
-    class ComparadorDia : IComparadorTiempo
+    public class ComparadorDia : IComparadorTiempo
     {
         public string Comparar(DateTime dt1, DateTime dt2)
         {
             string texto = string.Empty;
             double diasTranscurridos = (dt1 - dt2).TotalDays;
-            if (diasTranscurridos >= 1 && diasTranscurridos < 30)
+            if (Math.Round((dt1 - dt2).TotalHours) >= 24 && Math.Round(diasTranscurridos) < 30)
             {
-                texto = " ocurrira en " + Math.Round(Math.Abs(diasTranscurridos)).ToString() + " día(s).";
+                texto = " ocurrira en " + Math.Round(diasTranscurridos).ToString() + " día(s).";
             }
-            else if (-diasTranscurridos >= 1 && -diasTranscurridos < 30)
+            else if (Math.Round(-(dt1 - dt2).TotalHours) >= 24 && Math.Round(- diasTranscurridos) < 30)
             {
-                texto = " ocurrió hace " + Math.Round(Math.Abs(diasTranscurridos)).ToString() + " día(s).";
+                texto = " ocurrió hace " + Math.Round(-diasTranscurridos).ToString() + " día(s).";
             }
             return texto;
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AplicacionEventos2.Controladores.Interfaces
 {
-    interface IObtenedorArgumentos
+    public interface IObtenedorArgumentos
     {
         string ObtenerTextoArgumento();
     }

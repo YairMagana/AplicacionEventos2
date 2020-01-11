@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AplicacionEventos2.Servicios.Interfaces
 {
-    interface ILectorArchivo
+    public interface ILectorArchivo
     {
         StreamReader ObtenerStream();
     }

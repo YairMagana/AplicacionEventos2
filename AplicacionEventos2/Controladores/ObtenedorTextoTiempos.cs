@@ -11,16 +11,14 @@ namespace AplicacionEventos2.Controladores
 {
     class ObtenedorTextoTiempos : IObtenedorContenidoArchivo
     {
-        IObtenedorArgumentos obtenedorArgumentos;
         ILectorArchivo lectorArchivos;
 
         private string texto;
 
         public string Texto { get => texto; set => texto = value; }
 
-        public ObtenedorTextoTiempos(IObtenedorArgumentos _obtenedorArgumentos, ILectorArchivo _lectorArchivos)
+        public ObtenedorTextoTiempos(ILectorArchivo _lectorArchivos)
         {
-            obtenedorArgumentos = _obtenedorArgumentos;
             lectorArchivos = _lectorArchivos;
         }
 
@@ -28,7 +26,6 @@ namespace AplicacionEventos2.Controladores
         {
             // Servicios que solo le importan al caso del Lector de Eventos
             IParseadorLinea parseadorLinea = new ParseadorLinea();
-            IValidadorColumnas validadorColumnas = new ValidadorDosColumnas();
 
             List<IComparadorTiempo> lstComparadores = new List<IComparadorTiempo>();
             IComparadorTiempo comparadorMes = new ComparadorMes();
@@ -41,6 +38,7 @@ namespace AplicacionEventos2.Controladores
             lstComparadores.Add(comparadorHora);
             lstComparadores.Add(comparadorMinuto);
 
+            IValidadorColumnas validadorColumnas = new ValidadorDosColumnas();
             IRealizadorComparaciones realizadorComparaciones = new RealizadorComparaciones(lstComparadores);
             IGeneradorTextos generadorTextos = new GeneradorTextoEventos(validadorColumnas, realizadorComparaciones);
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AplicacionEventos2.Servicios.Interfaces
 {
-    interface IValidadorColumnas
+    public interface IValidadorColumnas
     {
         bool ValidarColumnas(string[] columnas);
     }

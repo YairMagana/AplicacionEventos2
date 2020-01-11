@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AplicacionEventos2.Servicios
 {
-    class GeneradorTextoEventos : IGeneradorTextos
+    public class GeneradorTextoEventos : IGeneradorTextos
     {
         IValidadorColumnas validadorColumnas;
         IRealizadorComparaciones realizadorComparaciones;
@@ -17,7 +17,7 @@ namespace AplicacionEventos2.Servicios
         }
         public string GenerarTextoPorLinea(string[] columnas)
         {
-            string texto = string.Empty;
+            string texto;
             DateTime dt;
             DateTime ahora = DateTime.Now;
             if (validadorColumnas.ValidarColumnas(columnas))

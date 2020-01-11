@@ -15,7 +15,7 @@ namespace AplicacionEventos2
             ILectorArchivo lectorArchivos = new LectorArchivo(obtenedorArgumentos);
 
             // Capa de procesamiento
-            ObtenedorTextoTiempos mostradorContenidoEventos = new ObtenedorTextoTiempos(obtenedorArgumentos, lectorArchivos);
+            ObtenedorTextoTiempos mostradorContenidoEventos = new ObtenedorTextoTiempos(lectorArchivos);
             mostradorContenidoEventos.ObtenerContenidoFormateadoArchivos();
 
             // Capa de presentación

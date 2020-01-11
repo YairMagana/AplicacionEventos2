@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AplicacionEventos2.Controladores.Interfaces
 {
-    interface IDesplegador
+    public interface IDesplegador
     {
         void Desplegar(string _texto);
     }
