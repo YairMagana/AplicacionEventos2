@@ -3,6 +3,16 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Clases\GeneradorTextoEventos.cs" />
+    <Compile Remove="Clases\LectorLineas.cs" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="If Not Exist &quot;$(ProjectDir)$(OutDir)\Prueba.csv&quot; (&#xD;&#xA;copy $(ProjectDir)Ejemplo\Prueba.csv $(ProjectDir)$(OutDir)&#xD;&#xA;)&#xD;&#xA;" />
+  </Target>
 
 </Project>

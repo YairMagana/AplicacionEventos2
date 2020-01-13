@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Servicios\GeneradorTextoEventosUTest.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
@@ -20,10 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AplicacionEventos2\AplicacionEventos2.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Servicios\" />
   </ItemGroup>
 
 </Project>

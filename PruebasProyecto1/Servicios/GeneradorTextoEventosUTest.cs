@@ -14,8 +14,8 @@ namespace PruebasUnitarias
         [TestMethod()]
         public void GenerarTextoPorLinea_ObtenerUnaLineaDeTextoEventoCompleta_TextoDeLineaCompleto()
         {
-            var DOCValidarColumnas = new Mock<IValidadorColumnas>();
-            var DOCRealizadorComparaciones = new Mock<IRealizadorComparaciones>();
+            var DOCValidarColumnas = new Mock<IValidadorCamposCVS>();
+            var DOCRealizadorComparaciones = new Mock<IPresentadorEventos>();
 
             DOCValidarColumnas.Setup(s => s.ValidarColumnas(It.IsAny<string[]>())).Returns(true);
             DOCRealizadorComparaciones.Setup(s => s.Comparar(It.IsAny<DateTime>(), It.IsAny<DateTime>())).Returns(" x");

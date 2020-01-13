@@ -1,7 +1,9 @@
-﻿using AplicacionEventos2.Controladores;
-using AplicacionEventos2.Controladores.Interfaces;
-using AplicacionEventos2.Servicios;
-using AplicacionEventos2.Servicios.Interfaces;
+﻿using AplicacionEventos2.Clases.Archivos;
+using AplicacionEventos2.Clases.Argumentos;
+using AplicacionEventos2.Clases.Desplegadores;
+using AplicacionEventos2.Clases.Procesador;
+using AplicacionEventos2.Clases.Procesador.Responsabilidades;
+using AplicacionEventos2.Clases.Procesador.Utilidades;
 using System;
 
 namespace AplicacionEventos2
@@ -10,17 +12,36 @@ namespace AplicacionEventos2
     {
         static void Main(string[] args)
         {
-            // Servicios
-            IObtenedorArgumentos obtenedorArgumentos = new ObtenedorArgumentos(args);
-            ILectorArchivo lectorArchivos = new LectorArchivo(obtenedorArgumentos);
+            string texto;
+            try
+            {
+                /*** SERVICIOS ***/
+                // * Argumento
+                IObtenedorTextoArgumentos obtenedorTextoPrimerArgumento = new ObtenedorTextoPrimerArgumento(args);
+                // Archivo
+                IValidadorArchivo validadorArchivo = new ValidarArchivoTexto();
+                ILectorArchivoTexto lectorArchivoTexto = new LectorArchivoTexto(obtenedorTextoPrimerArgumento.ObtenerTextoArgumentos(), validadorArchivo);
+                IObtenedorRegistrosArchivoListaStrings obtenedorContenidoArchivoListaStrings = new ObtenedorRegistrosArchivoListaStrings(lectorArchivoTexto);
 
-            // Capa de procesamiento
-            ObtenedorTextoTiempos mostradorContenidoEventos = new ObtenedorTextoTiempos(lectorArchivos);
-            mostradorContenidoEventos.ObtenerContenidoFormateadoArchivos();
-
-            // Capa de presentación
+                // * Procesamiento
+                IDivisorLinea divisorLinea = new DivisorLineaDosCampos();
+                IValidadorCamposCVS validadorCamposCVS = new ValidadorCamposEventos();
+                //   Cadena de comparaciones
+                IDeterminadorDiferenciaTiempo determinadorDiferenciaMes = new DeterminadorDiferenciaMes(null);
+                IDeterminadorDiferenciaTiempo determinadorDiferenciaDia = new DeterminadorDiferenciaDia(determinadorDiferenciaMes);
+                IDeterminadorDiferenciaTiempo determinadorDiferenciaHora = new DeterminadorDiferenciaHora(determinadorDiferenciaDia);
+                IDeterminadorDiferenciaTiempo determinadorDiferenciaMinuto = new DeterminadorDiferenciaMinuto(determinadorDiferenciaHora);
+                IAnalizadorTextoEvento analizadorEvento = new AnalizadorTextoEvento(divisorLinea, validadorCamposCVS, determinadorDiferenciaMinuto);
+                IPresentadorEventos presentadorEventos = new PresentadorEventos(obtenedorContenidoArchivoListaStrings.ObtenerRegistrosArchivo(), analizadorEvento);
+                texto = presentadorEventos.PresentarEventos();
+            }
+            catch (Exception ex)
+            {
+                texto = $"Ha ocurrido un error: {ex.Message}";
+            }
+            //// Capa de presentación
             IDesplegador desplegador = new DesplegadorPantalla();
-            desplegador.Desplegar(mostradorContenidoEventos.Texto);
+            desplegador.Desplegar(texto);
         }
     }
 }

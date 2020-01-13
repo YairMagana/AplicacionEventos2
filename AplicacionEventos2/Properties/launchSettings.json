@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AplicacionEventos2": {
+      "commandName": "Project",
+      "commandLineArgs": "Prueba.csv"
+    }
+  }
+}
